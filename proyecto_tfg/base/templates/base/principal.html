@@ -1,0 +1,221 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopMeal</title>
+    <link rel="stylesheet" href="{% static 'base/css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script defer src="{% static 'base/js/interfaz.js' %}"></script>
+    <link rel="icon" href="{% static 'base/img/logo.png' %}" type="image/x-icon">
+</head>
+<body>
+    <!-- Sticky Navbar -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="{% static 'base/img/logo.png' %}" alt="TopMeal Logo">
+            <span>TopMeal</span>
+        </div>
+        
+        <div class="navbar-actions">
+            <a href="{% url 'registro' %}" class="btn-outline">Registrarse</a>
+            <a href="{% url 'login' %}" class="btn-primary">Iniciar Sesión</a>
+        </div>
+        <button class="navbar-toggle" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>¡Descubre, reserva y disfruta!</h1>
+            <p class="hero-tagline">Tu comida favorita, en tu mesa o en tu restaurante preferido. <br>Explora cientos de opciones cerca de ti.</p>
+            <!-- NUEVA barra de búsqueda de restaurantes -->
+            <form class="restaurant-search-bar" autocomplete="off" role="search" aria-label="Buscar restaurantes por nombre" style="margin-bottom:18px;">
+                <input type="text" placeholder="Buscar restaurante por nombre" aria-label="Buscar restaurante por nombre">
+                <button type="submit">Buscar</button>
+                <!-- El botón limpiar se añade por JS -->
+            </form>
+            <!-- Input de ubicación (solo ubicación, no búsqueda de restaurantes) -->
+            <form class="location-bar" autocomplete="off" role="form" aria-label="Ingresar ubicación" style="margin-bottom:18px;">
+                <input type="text" placeholder="¿A dónde enviamos tu comida?" aria-label="Ubicación de entrega">
+                <button type="submit">Confirmar</button>
+            </form>
+            <!-- Filtros de categorías -->
+            <div class="hero-categories" id="categorias" role="group" aria-label="Filtrar por categoría">
+                <button class="cat-btn" type="button" aria-pressed="false">
+                    <img src="https://img.icons8.com/color/48/000000/hamburger.png" alt="Burgers">Burgers
+                </button>
+                <button class="cat-btn" type="button" aria-pressed="false">
+                    <img src="https://img.icons8.com/color/48/000000/pizza.png" alt="Pizza">Pizza
+                </button>
+                <button class="cat-btn" type="button" aria-pressed="false">
+                    <img src="https://img.icons8.com/color/48/000000/sushi.png" alt="Sushi">Sushi
+                </button>
+                <button class="cat-btn" type="button" aria-pressed="false">
+                    <img src="https://img.icons8.com/color/48/000000/broccoli.png" alt="Vegano">Vegano
+                </button>
+                <button class="cat-btn" type="button" aria-pressed="false">
+                    <img src="https://img.icons8.com/color/48/000000/taco.png" alt="Mexicana">Mexicana
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Carrusel de Restaurantes Destacados -->
+    <section class="carousel-section" id="destacados">
+        <h2>Restaurantes Destacados</h2>
+        <div class="carousel">
+            <button class="carousel-btn prev" aria-label="Anterior">&#10094;</button>
+            <div class="carousel-track">
+                <div class="carousel-card">
+                    <img src="{% static 'base/img/cobos.jpg' %}" alt="Cobos Tradicional">
+                    <div class="carousel-info">
+                        <h3>Cobos Tradicional</h3>
+                        <p>Alta cocina vanguardista con 3 estrellas Michelin.</p>
+                        <div class="rating-bar-container" aria-label="Valoración 4.9 de 5">
+                            <div class="rating-bar" style="width:98%; background: linear-gradient(90deg,#43e97b,#38f9d7);"></div>
+                            <span class="rating-bar-label">4.9/5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-card">
+                    <img src="{% static 'base/img/sushi1.jpg' %}" alt="Carvalho">
+                    <div class="carousel-info">
+                        <a href="{% url 'restaurante' %}">
+                            <h3>Monsieur Sushita</h3>
+                        </a>
+                        <p>Fusión de sabores orientales y asiaticos.</p>
+                        <div class="rating-bar-container" aria-label="Valoración 4.5 de 5">
+                            <div class="rating-bar" style="width:90%; background: linear-gradient(90deg,#99f71e,#51ff00);"></div>
+                            <span class="rating-bar-label">4.9/5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-card">
+                    <img src="{% static 'base/img/goiko.jpg' %}" alt="Goiko">
+                    <div class="carousel-info">
+                        <h3>Goiko</h3>
+                        <p>Hamburguesas gourmet con ingredientes frescos.</p>
+                        <div class="rating-bar-container" aria-label="Valoración 4.8 de 5">
+                            <div class="rating-bar" style="width:96%; background: linear-gradient(90deg,#43e97b,#38f9d7);"></div>
+                            <span class="rating-bar-label">4.8/5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-card">
+                    <img src="{% static 'base/img/restaurante.jpg' %}" alt="Restaurante">
+                    <div class="carousel-info">
+                        <h3>Restaurante Local</h3>
+                        <p>Comida tradicional y ambiente familiar.</p>
+                        <div class="rating-bar-container" aria-label="Valoración 4.3 de 5">
+                            <div class="rating-bar" style="width:86%; background: linear-gradient(90deg,#f7971e,#ffd200);"></div>
+                            <span class="rating-bar-label">4.3/5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next" aria-label="Siguiente">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="benefits-section">
+        <h2>¿Por qué elegir TopMeal?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <img src="https://img.icons8.com/color/96/000000/delivery.png" alt="Entrega rápida">
+                <h4>Entrega rápida</h4>
+                <p>Recibe tu pedido en minutos, seguimiento en tiempo real.</p>
+            </div>
+            <div class="benefit-card">
+                <img src="https://img.icons8.com/color/96/000000/restaurant-menu.png" alt="Reservas fáciles">
+                <h4>Reservas fáciles</h4>
+                <p>Reserva tu mesa en segundos, sin llamadas ni esperas.</p>
+            </div>
+            <div class="benefit-card">
+                <img src="https://img.icons8.com/color/96/000000/sale--v1.png" alt="Promociones">
+                <h4>Promociones</h4>
+                <p>Disfruta de descuentos exclusivos y menús especiales.</p>
+            </div>
+            <div class="benefit-card">
+                <img src="https://img.icons8.com/color/96/000000/online-support.png" alt="Atención 24/7">
+                <h4>Atención 24/7</h4>
+                <p>Soporte personalizado para resolver cualquier duda.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opiniones Slider -->
+    <section class="opiniones-section" id="opiniones">
+        <h2>Opiniones de nuestros usuarios</h2>
+        <div class="opiniones-slider">
+            <button class="opiniones-btn prev" aria-label="Anterior">&#10094;</button>
+            <div class="opiniones-track">
+                <div class="opinion-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Daniel Osman">
+                    <blockquote>“Las entregas más rápidas de todo el sector”</blockquote>
+                    <span>Daniel Osman<br><small>Usuario</small></span>
+                </div>
+                <div class="opinion-card">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Rosa Pérez">
+                    <blockquote>“Gracias a TOPMEAL mi restaurante es otro”</blockquote>
+                    <span>Rosa Pérez<br><small>Dueña de restaurante</small></span>
+                </div>
+                <div class="opinion-card">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Daniela Benítez">
+                    <blockquote>“Las mejores condiciones de todo el sector”</blockquote>
+                    <span>Daniela Benítez<br><small>Repartidora</small></span>
+                </div>
+            </div>
+            <button class="opiniones-btn next" aria-label="Siguiente">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contacto">
+        <div class="footer-main">
+            <div class="footer-logo">
+                <img src="{% static 'base/img/logo.png' %}" alt="TopMeal Logo">
+                <span>TopMeal</span>
+            </div>
+            <div class="footer-links">
+                <div>
+                    <h5>Colabora</h5>
+                    <a href="#">Repartidores</a>
+                    <a href="#">Trabaja con nosotros</a>
+                    <a href="#">Añade tu restaurante</a>
+                </div>
+                <div>
+                    <h5>Enlaces</h5>
+                    <a href="#">Acerca de nosotros</a>
+                    <a href="#">Contacto</a>
+                    <a href="#">Seguridad</a>
+                </div>
+                <div>
+                    <h5>Legal</h5>
+                    <a href="#">Cookies</a>
+                    <a href="#">Condiciones de uso</a>
+                    <a href="#">Privacidad</a>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="#"><img src="{% static 'base/img/face.png' %}" alt="Facebook"></a>
+                <a href="#"><img src="{% static 'base/img/instagram.webp' %}" alt="Instagram"></a>
+                <a href="#"><img src="{% static 'base/img/youtube.png' %}" alt="YouTube"></a>
+            </div>
+        </div>
+        <div class="footer-copy">
+            &copy; 2024 TopMeal. Todos los derechos reservados.
+        </div>
+    </footer>
+    <div id="confirmation-message" class="hidden">
+        <span id="confirmation-text"></span>
+        <button id="confirmation-close" aria-label="Cerrar mensaje">&times;</button>
+    </div>
+</body>
+</html>

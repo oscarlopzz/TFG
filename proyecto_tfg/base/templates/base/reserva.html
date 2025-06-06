@@ -1,0 +1,236 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monsieur Sushita - TopMeal</title>
+    <link rel="stylesheet" href="{% static 'base/css/reserva.css' %}">
+    <script defer src="{% static 'base/js/reserva.js' %}"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="{% static 'base/img/logo.png' %}" alt="TopMeal Logo">
+            <span>TopMeal</span>
+        </div>
+        <div class="navbar-actions">
+            <a href="{% url 'registro' %}" class="btn-outline">Registrarse</a>
+            <a href="{% url 'login' %}" class="btn-primary">Iniciar Sesión</a>
+        </div>
+        <button class="navbar-toggle" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+    <!-- Main content -->
+    <main>
+        <!-- Restaurant Header -->
+        <section class="restaurant-card">
+            <div class="restaurant-info">
+                <h2>Monsieur Sushita</h2>
+                <div class="restaurant-details">
+                    <div class="restaurant-detail">
+                        <!-- Icono ubicación -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21s8-5.5 8-12a8 8 0 10-16 0c0 6.5 8 12 8 12z" />
+                        </svg>
+                        Calle de Velázquez, 68, 28001, Madrid
+                    </div>
+                    <div class="restaurant-detail">
+                        <!-- Icono comida -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M3 12h18M4 15h16M2 18h20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="8" r="2" stroke-width="2" />
+                        </svg>
+                        Asiático - Precio medio: 30 €
+                    </div>
+                    <div class="restaurant-detail">
+                        <!-- Icono estrella -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.977 2.89a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.977-2.89a1 1 0 00-1.176 0l-3.977 2.89c-.784.57-1.838-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.978 10.1c-.783-.57-.38-1.81.588-1.81h4.915a1 1 0 00.95-.69l1.518-4.674z" />
+                        </svg>
+                        <span class="rating">9,1</span> (5384 opiniones)
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="rate-button" aria-label="Valorar restaurante">Valorar</button>
+                    <!-- Icono corazón -->
+                    <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-label="Añadir a favoritos">
+                        <path d="M12.1 20.8l-1.1-1C5.1 14.4 2 11.6 2 8.2 2 5.8 4 4 6.5 4c1.6 0 3 0.9 3.9 2.2C11.5 4.9 13 4 14.5 4 17 4 19 5.8 19 8.2c0 3.4-3.1 6.2-9 11.6l-1.1 1z"
+                            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Gallery -->
+        <section class="image-gallery">
+            <div class="container">
+                <div class="image-gallery-main">
+                    <img src="{% static 'base/img/sushi1.jpg' %}" alt="Plato principal de sushi">
+                </div>
+                <div class="image-gallery-side">
+                    <img src="{% static 'base/img/sushi2.avif' %}" alt="Plato lateral de sushi">
+                    <button class="image-gallery-more" aria-label="Ver más imágenes">Ver más</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu and Reservation Section -->
+        <section class="restaurant-content">
+            <div class="container">
+                <!-- Menu Section -->
+                <div class="restaurant-main">
+                    <h2>Carta</h2>
+                    <div class="menu-section">
+                        <img src="{% static 'base/img/menu.jpg' %}" alt="Menú del restaurante">
+                        <a class="btn-primary" aria-label="Pedir a domicilio" href="{% url 'pedir' %}">Pedir a domicilio</a>
+                    </div>
+
+                    <!-- Opinions Section -->
+                    <div class="opiniones-section">
+                        <h2>Opiniones</h2>
+                        <div class="opinion-summary">
+                            <div class="opinion-left">
+                                <p class="rating-overview">8.9 <span style="color: green;">Excelente</span></p>
+                                <p>4.320 opiniones</p>
+                            </div>
+                            <div class="opinion-right">
+                                <div>
+                                    <p>Ambiente</p>
+                                    <div class="rating-bar-container">
+                                        <div class="rating-bar" style="width: 94%; --score: 9.4;"></div>
+                                        <span class="rating-bar-label">9.4</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>Comida</p>
+                                    <div class="rating-bar-container">
+                                        <div class="rating-bar" style="width: 85%; --score: 8.5;"></div>
+                                        <span class="rating-bar-label">8.5</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>Servicio</p>
+                                    <div class="rating-bar-container">
+                                        <div class="rating-bar" style="width: 88%; --score: 8.8;"></div>
+                                        <span class="rating-bar-label">8.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reservation Section -->
+                <div class="restaurant-aside">
+                    <h2>Reservar</h2>
+                    <div class="reservation-section">
+                        <div class="calendar-header">
+                            <button class="prev-month" aria-label="Mes anterior">&#9664;</button>
+                            <span class="calendar-title">Mayo de 2025</span>
+                            <button class="next-month" aria-label="Mes siguiente">&#9654;</button>
+                        </div>
+                        <div class="calendar">
+                            <span class="day-header">lun</span>
+                            <span class="day-header">mar</span>
+                            <span class="day-header">mié</span>
+                            <span class="day-header">jue</span>
+                            <span class="day-header">vie</span>
+                            <span class="day-header">sáb</span>
+                            <span class="day-header">dom</span>
+                            <!-- Calendar Days -->
+                            <span></span><span></span><span></span>
+                            <span class="day">1</span>
+                            <span class="day">2</span>
+                            <span class="day">3</span>
+                            <span class="day">4</span>
+                            <span class="day">5</span>
+                            <span class="day">6</span>
+                            <span class="day">7</span>
+                            <span class="day">8</span>
+                            <span class="day">9</span>
+                            <span class="day">10</span>
+                            <span class="day">11</span>
+                            <span class="day">12</span>
+                            <span class="day">13</span>
+                            <span class="day selected">14</span>
+                            <span class="day">15</span>
+                            <span class="day">16</span>
+                            <span class="day">17</span>
+                            <span class="day">18</span>
+                            <span class="day">19</span>
+                            <span class="day disabled">20</span>
+                            <span class="day">21</span>
+                            <span class="day">22</span>
+                            <span class="day">23</span>
+                            <span class="day">24</span>
+                            <span class="day">25</span>
+                            <span class="day">26</span>
+                            <span class="day">27</span>
+                            <span class="day">28</span>
+                            <span class="day">29</span>
+                            <span class="day">30</span>
+                            <span class="day">31</span>
+                            <span class="day">1</span>
+                        </div>
+                        <label>Hora</label>
+                        <select>
+                            <option>14:30</option>
+                        </select>
+                        <label>Personas</label>
+                        <select>
+                            <option>4</option>
+                        </select>
+                        <label>Código Promocional</label>
+                        <input type="text" maxlength="8" pattern="\d{8}" title="El código debe tener exactamente 8 dígitos si se ingresa">
+                        <button class="btn-primary" aria-label="Confirmar reserva">Reservar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contacto">
+        <div class="footer-main">
+            <div class="footer-logo">
+                <img src="{% static 'base/img/logo.png' %}" alt="TopMeal Logo">
+                <span>TopMeal</span>
+            </div>
+            <div class="footer-links">
+                <div>
+                    <h5>Colabora</h5>
+                    <a href="#">Repartidores</a>
+                    <a href="#">Trabaja con nosotros</a>
+                    <a href="#">Añade tu restaurante</a>
+                </div>
+                <div>
+                    <h5>Enlaces</h5>
+                    <a href="#">Acerca de nosotros</a>
+                    <a href="#">Contacto</a>
+                    <a href="#">Seguridad</a>
+                </div>
+                <div>
+                    <h5>Legal</h5>
+                    <a href="#">Cookies</a>
+                    <a href="#">Condiciones de uso</a>
+                    <a href="#">Privacidad</a>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="#"><img src="{% static 'base/img/face.png' %}" alt="Facebook"></a>
+                <a href="#"><img src="{% static 'base/img/instagram.webp' %}" alt="Instagram"></a>
+                <a href="#"><img src="{% static 'base/img/youtube.png' %}" alt="YouTube"></a>
+            </div>
+        </div>
+        <div class="footer-copy">
+            &copy; 2024 TopMeal. Todos los derechos reservados.
+        </div>
+    </footer>
+    <script src="../JS/scripts.js"></script>
+</body>
+</html>

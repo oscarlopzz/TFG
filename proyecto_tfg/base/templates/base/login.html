@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión | TopMeal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static 'base/css/styles.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="../../Imagenes/logo.png" alt="TopMeal Logo">
+            <span>TopMeal</span>
+        </div>
+    </nav>
+    <main style="display:flex;justify-content:center;align-items:center;min-height:70vh;">
+        <div class="modal" style="position:static;box-shadow:none;">
+            <h2>Iniciar Sesión</h2>
+            <form class="modal-form">
+                <input type="email" placeholder="Correo electrónico" required><br>
+                <input type="password" placeholder="Contraseña" required><br>
+                <button type="submit">Entrar</button>
+            </form>
+            <p style="margin-top:16px;">¿No tienes cuenta? <a href="{% url 'registro' %}" style="color:#e63946;">Regístrate</a></p>
+        </div>
+    </main>
+</body>
+</html>
